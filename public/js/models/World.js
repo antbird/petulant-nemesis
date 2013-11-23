@@ -1,12 +1,18 @@
-GAME.World =
+GAME.World = function()
 {
-    level: 1,
-    tile_counter: 0,
-    item_counter: 0,
-    enemy_counter: 0,
-    treasure_counter: 0,
-    tiles: [],
-    items: [],
-    enemies: [],
-    treasure: []
+    this.counters = 
+    {
+        "level": 0,        
+        "tiles": 0,
+        "items": 0,        
+        "enemies": 0,
+        "treasure": 0
+    };
+    this.level = 
+    {
+        "tiles": [],
+        "items": [],
+        "enemies": [],
+        "treasure": []
+    };
 };
