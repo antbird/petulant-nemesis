@@ -1,0 +1,7 @@
+GAME.WorldController =
+{
+    newLevel: function() {
+        
+    }
+
+};
