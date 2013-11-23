@@ -1,9 +1,9 @@
-GAME.Player = 
+GAME.Player = function()
 {
-    name: "Pierre",
-    level: 1,
-    exp: 0,
-    weapon: 0,
-    inventory: []
-    
+    this.name = "Pierre";
+    this.level = 1;
+    this.exp = 0;
+    this.weapon = 0;
+    this.inventory = [];
+    this.abilities = [];
 };
