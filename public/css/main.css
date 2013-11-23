@@ -1,0 +1,21 @@
+#world {
+    font-size: 0;
+}
+
+.tile {
+    display: inline-block;
+    width: 25px;
+    height: 25px;    
+}
+
+.wall {        
+    background-color: dimgray;
+}
+
+.normal {        
+    background-color: grey;
+}
+
+.water {
+    background-color: dodgerblue;
+}
