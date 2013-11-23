@@ -1,1 +1,2 @@
 var GAME = {};
+GAME.data = {};
