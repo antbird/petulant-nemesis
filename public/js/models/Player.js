@@ -1,3 +1,4 @@
-GAME.Player = {
+GAME.Player = 
+{
     
 };
