@@ -1,5 +1,7 @@
 GAME.World = function()
 {
+    this.height = 32;
+    this.width = 32;
     this.counters = 
     {
         "level": 0,        
