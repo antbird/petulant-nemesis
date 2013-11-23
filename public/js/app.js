@@ -1,12 +1,12 @@
 var GAME = {};
 GAME.data = {};
 
-function newGame() 
+GAME.newGame = function() 
 {
     console.log("Game started!");
     GAME.player = new GAME.Player();
     GAME.world = new GAME.World();
     GAME.WorldController.newLevel();
-}
+};
 
-window.onload = newGame;
+window.onload = GAME.newGame;
