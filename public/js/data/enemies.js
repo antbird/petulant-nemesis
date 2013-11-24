@@ -31,5 +31,14 @@ GAME.data.enemies =
         resistances: {},
         weaknesses: {},
         abilities: [1]
+    },
+    3: {
+        name: "Nundead",
+        id: 3,
+        attack: 0.52,
+        defense: 1,
+        resistances: {},
+        weaknesses: {},
+        abilities: []
     }
 };
