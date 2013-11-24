@@ -17,8 +17,10 @@ GAME.World = function()
     };
     this.level = 
     {
+        "player": {y: 0, x: 0},
         "rooms": [],
         "tiles": [],
+        "nonsolid_tiles": [],
         "items": [],
         "enemies": [],
         "treasure": []
