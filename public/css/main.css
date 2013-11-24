@@ -2,31 +2,33 @@
     font-size: 0;
 }
 
-.tile {
+#world span {
     display: inline-block;
+    line-height:1px;
+    outline:1px dashed gray;
 }
 
-.tile-small {
+.tile-small span {
     width: 15px;
     height: 15px;
 }
 
-.tile-medium {    
+.tile-medium span {    
     width: 25px;
     height: 25px;    
 }
 
-.tile-large {    
+.tile-large span {    
     width: 50px;
     height: 50px;
 }
 
 .wall {        
-    background-color: dimgray;
+    background-color: dimgray;    
 }
 
-.normal {        
-    background-color: grey;
+.normal {
+    background-color: #ABABAB;
 }
 
 .water {
