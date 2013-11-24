@@ -2,6 +2,11 @@ GAME.World = function()
 {
     this.height = 32;
     this.width = 32;
+    this.roomcount = 12;
+    this.maxRoomSize = 6;
+    this.minRoomSize = 3;
+    this.tile_size = "medium";
+    
     this.counters = 
     {
         "level": 0,        
@@ -12,6 +17,7 @@ GAME.World = function()
     };
     this.level = 
     {
+        "rooms": [],
         "tiles": [],
         "items": [],
         "enemies": [],
