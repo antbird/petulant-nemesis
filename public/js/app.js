@@ -10,6 +10,9 @@ GAME.newGame = function()
 };
 
 window.onload = GAME.newGame;
+window.onkeyup = function(e) {
+    GAME.KeyboardController.dispatcher(e);
+}
 
 //implement Fisher-Yates algorithm for array shuffling
 Array.prototype.shuffle = function (){
