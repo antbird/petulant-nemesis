@@ -5,18 +5,25 @@ GAME.WorldController =
         this.generateMap();
         this.generateRooms(GAME.world.roomcount);  
         this.generateHallways(GAME.world.roomcount);
+        
+        GAME.world.level.nonsolid_tiles.shuffle();
+
+        this.spawnPlayer();
+        this.spawnEnemies();
+        
         this.renderWorld();
     },
     
     generateMap: function() {
         GAME.world.level.tiles = [];
+        GAME.world.level.nonsolid_tiles = [];
         GAME.world.counters.tiles = 0;
         for (var y = 0; y < GAME.world.height; y++)
         {
             GAME.world.level.tiles[y] = [];
             for (var x = 0; x < GAME.world.width; x++)
-            {
-                GAME.world.level.tiles[y][x] = GAME.TileController.newTile(2); //fills all spaces with a wall tile, update later
+            {                
+                GAME.world.level.tiles[y][x] = this.generateTile(2); //fills all spaces with a wall tile, update later                
             }
         }        
     },
@@ -27,7 +34,10 @@ GAME.WorldController =
             GAME.world.level.rooms[i] = GAME.RoomController.newRoom();
             for(var y = GAME.world.level.rooms[i].y; y < GAME.world.level.rooms[i].y + GAME.world.level.rooms[i].h; y++) {
                 for(var x = GAME.world.level.rooms[i].x; x < GAME.world.level.rooms[i].x + GAME.world.level.rooms[i].w; x++) {
-                    GAME.world.level.tiles[y][x] = this.generateTile();                
+                    if (GAME.world.level.tiles[y][x].tile_id === 2) { //if this is a wall
+                        GAME.world.level.tiles[y][x] = this.generateTile(1);
+                        GAME.world.level.nonsolid_tiles.push({'y':y,'x':x});
+                    }
                 }                
             } 
         }        
@@ -53,7 +63,7 @@ GAME.WorldController =
                 };
                 
             while (pointB.x !== pointA.x || pointB.y !== pointA.y){
-                if (Math.random()*100 < 25){
+                if (Math.random()*100 < 33){
                     if (pointB.x !== pointA.x){
                         if(pointB.x > pointA.x){
                             pointB.x--;
@@ -70,19 +80,32 @@ GAME.WorldController =
                 }
 
                 if(pointB.x < GAME.world.width && pointB.y < GAME.world.width){         
-                    GAME.world.level.tiles[pointB.y][pointB.x] = this.generateTile();
+                    GAME.world.level.tiles[pointB.y][pointB.x] = this.generateTile(1);
+                    GAME.world.level.nonsolid_tiles.push({'y':pointB.y,'x':pointB.x});
                 }
             }
         }        
     },    
     
-    generateTile: function() {
+    generateTile: function(tile_id) {
         //add some logic here to determine which tiles to use
-        return GAME.TileController.newTile(1);
+        return {id: ++GAME.world.counters.tiles, tile_id: tile_id};
+        //return GAME.TileController.newTile(1);
+    },    
+    
+    
+    spawnPlayer: function() {
+        var tile = GAME.world.level.nonsolid_tiles.pop();
+        GAME.world.level.player = {y: tile.y, x: tile.x};
+    },
+
+    spawnEnemies: function() {
+
     },
 
     renderWorld: function() {
-        GAME.WorldView.render();
+        GAME.WorldView.renderTiles();
+        GAME.WorldView.renderPlayer();
     }
 
 };
