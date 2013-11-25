@@ -1,4 +1,4 @@
-GAME.data.enemies = 
+GAME.data.Enemy = 
 {
     1: {        
         name: "Vampire",        

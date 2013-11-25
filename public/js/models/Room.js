@@ -1,4 +1,4 @@
-GAME.Room = function(x,y,w,h,center_x,center_y)
+GAME.models.Room = function(x,y,w,h,center_x,center_y)
 {    
     this.x = x;
     this.y = y;

@@ -1,4 +1,4 @@
-GAME.data.abilities =
+GAME.data.Ability =
 {
     1: {
         id: 1,

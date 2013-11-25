@@ -1,4 +1,4 @@
-GAME.data.tiles =
+GAME.data.Tile =
 {
     1: {
         id: 1,

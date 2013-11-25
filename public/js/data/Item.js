@@ -1,4 +1,4 @@
-GAME.data.items =
+GAME.data.Item =
 {
     1: {
         id: 1,

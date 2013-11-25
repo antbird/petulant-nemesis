@@ -1,4 +1,4 @@
-GAME.RoomController =
+GAME.controllers.Room =
 {
     newRoom: function()
     {        
@@ -14,7 +14,7 @@ GAME.RoomController =
                 continue;
             }
             
-            return new GAME.Room(x,y,w,h,center_x,center_y);
+            return new GAME.models.Room(x,y,w,h,center_x,center_y);
         }
     }
 };

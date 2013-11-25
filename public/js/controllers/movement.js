@@ -1,4 +1,4 @@
-GAME.MovementController =
+GAME.controllers.Movement =
 {
     move: function(dir,xy_obj) {
         if (dir === 'W' && !this.checkSolid(xy_obj.x-1,xy_obj.y)) {
@@ -13,6 +13,6 @@ GAME.MovementController =
     },
     
     checkSolid: function(x,y) {
-        return GAME.data.tiles[GAME.world.tiles[y][x].tile_id].solid;
+        return GAME.data.Tile[GAME.world.tiles[y][x].tile_id].solid;
     }
 };

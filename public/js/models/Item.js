@@ -1,4 +1,4 @@
-GAME.Item = function(item)
+GAME.models.Item = function(item)
 {
     this.id = ++GAME.world.counters.items;
     this.item_id = item.id;

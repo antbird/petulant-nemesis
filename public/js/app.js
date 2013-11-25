@@ -1,17 +1,22 @@
-var GAME = {};
-GAME.data = {};
+var GAME = {
+    data: {},
+    views: {},
+    models: {},
+    controllers: {}
+};
+
 
 GAME.newGame = function() 
 {
     console.log("Game started!");
     GAME.player = new GAME.Player();
     GAME.world = new GAME.World();
-    GAME.WorldController.newLevel();
+    GAME.controllers.World.newLevel();
 };
 
 window.onload = GAME.newGame;
 window.onkeyup = function(e) {
-    GAME.KeyboardController.dispatcher(e);
+    GAME.controllers.Keyboard.dispatcher(e);
 }
 
 //implement Fisher-Yates algorithm for array shuffling

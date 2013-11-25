@@ -1,4 +1,4 @@
-GAME.WorldView = 
+GAME.views.World = 
 {
     renderTiles: function() {
         var container = document.getElementById("world");
@@ -6,7 +6,7 @@ GAME.WorldView =
         GAME.world.tiles.forEach(function (column)
         {
             column.forEach(function (tile) {
-                tiles += "<span id=\"tile_" + tile.id + "\" class=\"" + GAME.data.tiles[tile.tile_id].class_name + "\"></span>\n";
+                tiles += "<span id=\"tile_" + tile.id + "\" class=\"" + GAME.data.Tile[tile.tile_id].class_name + "\"></span>\n";
             });
             tiles += "<br/>";
         });

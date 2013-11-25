@@ -1,4 +1,4 @@
-GAME.WorldController =
+GAME.controllers.World =
 {
     newLevel: function() {
         ++GAME.world.counters.level;
@@ -25,22 +25,22 @@ GAME.WorldController =
             {                
                 GAME.world.tiles[y][x] = this.generateTile(2); //fills all spaces with a wall tile, update later                
             }
-        }        
+        }
     },
     
     generateRooms: function(numRooms) {
         GAME.world.rooms = [];
         for (var i =0; i < numRooms; i++) {
-            GAME.world.rooms[i] = GAME.RoomController.newRoom();
+            GAME.world.rooms[i] = GAME.controllers.Room.newRoom();
             for(var y = GAME.world.rooms[i].y; y < GAME.world.rooms[i].y + GAME.world.rooms[i].h; y++) {
                 for(var x = GAME.world.rooms[i].x; x < GAME.world.rooms[i].x + GAME.world.rooms[i].w; x++) {
                     if (GAME.world.tiles[y][x].tile_id === 2) { //if this is a wall
                         GAME.world.tiles[y][x] = this.generateTile(1);
                         GAME.world.nonsolid_tiles.push({'y':y,'x':x});
                     }
-                }                
-            } 
-        }        
+                }
+            }
+        }
     },
     
     generateHallways: function(numRooms) {       
@@ -56,7 +56,7 @@ GAME.WorldController =
                 roomNum = Math.floor(Math.random()*GAME.world.rooms.length);
             }
 
-            var roomB = GAME.world.rooms[roomNum],                
+            var roomB = GAME.world.rooms[roomNum],
                 pointB = {
                     x: Math.floor(Math.random()*roomB.w) + roomB.x,
                     y: Math.floor(Math.random()*roomB.h) + roomB.y
@@ -79,7 +79,7 @@ GAME.WorldController =
                     }
                 }
 
-                if(pointB.x < GAME.world.width && pointB.y < GAME.world.width){         
+                if(pointB.x < GAME.world.width && pointB.y < GAME.world.width) {
                     GAME.world.tiles[pointB.y][pointB.x] = this.generateTile(1);
                     GAME.world.nonsolid_tiles.push({'y':pointB.y,'x':pointB.x});
                 }
@@ -105,8 +105,7 @@ GAME.WorldController =
     },
 
     renderWorld: function() {
-        GAME.WorldView.renderTiles();
-        GAME.WorldView.renderPlayer();
+        GAME.views.World.renderTiles();
+        GAME.views.World.renderPlayer();
     }
-
 };

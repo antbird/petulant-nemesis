@@ -1,4 +1,4 @@
-GAME.Enemy = function(enemy)
+GAME.models.Enemy = function(enemy)
 {   
     this.id = ++GAME.world.counters.enemies;
     this.enemy_id = enemy.id;
@@ -9,10 +9,10 @@ GAME.Enemy = function(enemy)
     this.defense = Math.ceil(this.level * enemy.defense);
 
     this.resistances = function(){
-        return GAME.data.enemies[this.enemy_id].resistances;
+        return GAME.data.Enemy[this.enemy_id].resistances;
     };
     
     this.weaknesses = function(){
-        return GAME.data.enemies[this.enemy_id].weaknesses;
+        return GAME.data.Enemy[this.enemy_id].weaknesses;
     };
 };
