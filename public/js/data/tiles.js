@@ -4,18 +4,18 @@ GAME.data.tiles =
         id: 1,
         name: "Normal",
         class_name: "normal",
-        solid: 0
+        solid: false
     },
     2: {
         id: 2,
         name: "Wall",
         class_name: "wall",
-        solid: 1
+        solid: true
     },
     3: {
         id: 3,
         name: "Water",
         class_name: "water",
-        solid: 1
+        solid: true
     }
 };
