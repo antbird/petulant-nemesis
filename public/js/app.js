@@ -9,8 +9,8 @@ var GAME = {
 GAME.newGame = function() 
 {
     console.log("Game started!");
-    GAME.player = new GAME.Player();
-    GAME.world = new GAME.World();
+    GAME.player = new GAME.models.Player();
+    GAME.world = new GAME.models.World();
     GAME.controllers.World.newLevel();
 };
 

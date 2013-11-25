@@ -1,4 +1,4 @@
-GAME.Player = function()
+GAME.models.Player = function()
 {
     this.name = "Pierre";
     this.level = 1;

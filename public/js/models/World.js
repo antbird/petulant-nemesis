@@ -1,4 +1,4 @@
-GAME.World = function()
+GAME.models.World = function()
 {
     this.height = 32;
     this.width = 32;
