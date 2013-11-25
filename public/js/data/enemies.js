@@ -1,8 +1,9 @@
 GAME.data.enemies = 
 {
     1: {        
-        name: "Vampire",
+        name: "Vampire",        
         id: 1,
+        class_name: "vampire",
         attack: 1.17,
         defense: 1.05,
         resistances: {
@@ -26,6 +27,7 @@ GAME.data.enemies =
     2: {        
         name: "Mimic",
         id: 2,
+        class_name: "mimic",
         attack: 0.97,
         defense: 2,
         resistances: {},
@@ -35,6 +37,7 @@ GAME.data.enemies =
     3: {
         name: "Nundead",
         id: 3,
+        class_name: "nundead",
         attack: 0.52,
         defense: 1,
         resistances: {},
