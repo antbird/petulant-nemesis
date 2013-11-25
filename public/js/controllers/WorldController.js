@@ -3,10 +3,10 @@ GAME.WorldController =
     newLevel: function() {
         ++GAME.world.counters.level;
         this.generateMap();
-        this.generateRooms(GAME.world.roomcount);  
-        this.generateHallways(GAME.world.roomcount);
+        this.generateRooms(GAME.world.max_room_count);
+        this.generateHallways(GAME.world.max_room_count);
         
-        GAME.world.level.nonsolid_tiles.shuffle();
+        GAME.world.nonsolid_tiles.shuffle();
 
         this.spawnPlayer();
         this.spawnEnemies();
@@ -15,28 +15,28 @@ GAME.WorldController =
     },
     
     generateMap: function() {
-        GAME.world.level.tiles = [];
-        GAME.world.level.nonsolid_tiles = [];
+        GAME.world.tiles = [];
+        GAME.world.nonsolid_tiles = [];
         GAME.world.counters.tiles = 0;
         for (var y = 0; y < GAME.world.height; y++)
         {
-            GAME.world.level.tiles[y] = [];
+            GAME.world.tiles[y] = [];
             for (var x = 0; x < GAME.world.width; x++)
             {                
-                GAME.world.level.tiles[y][x] = this.generateTile(2); //fills all spaces with a wall tile, update later                
+                GAME.world.tiles[y][x] = this.generateTile(2); //fills all spaces with a wall tile, update later                
             }
         }        
     },
     
     generateRooms: function(numRooms) {
-        GAME.world.level.rooms = [];
+        GAME.world.rooms = [];
         for (var i =0; i < numRooms; i++) {
-            GAME.world.level.rooms[i] = GAME.RoomController.newRoom();
-            for(var y = GAME.world.level.rooms[i].y; y < GAME.world.level.rooms[i].y + GAME.world.level.rooms[i].h; y++) {
-                for(var x = GAME.world.level.rooms[i].x; x < GAME.world.level.rooms[i].x + GAME.world.level.rooms[i].w; x++) {
-                    if (GAME.world.level.tiles[y][x].tile_id === 2) { //if this is a wall
-                        GAME.world.level.tiles[y][x] = this.generateTile(1);
-                        GAME.world.level.nonsolid_tiles.push({'y':y,'x':x});
+            GAME.world.rooms[i] = GAME.RoomController.newRoom();
+            for(var y = GAME.world.rooms[i].y; y < GAME.world.rooms[i].y + GAME.world.rooms[i].h; y++) {
+                for(var x = GAME.world.rooms[i].x; x < GAME.world.rooms[i].x + GAME.world.rooms[i].w; x++) {
+                    if (GAME.world.tiles[y][x].tile_id === 2) { //if this is a wall
+                        GAME.world.tiles[y][x] = this.generateTile(1);
+                        GAME.world.nonsolid_tiles.push({'y':y,'x':x});
                     }
                 }                
             } 
@@ -45,7 +45,7 @@ GAME.WorldController =
     
     generateHallways: function(numRooms) {       
         for (var i = 0; i < numRooms; i++) {
-            var roomA = GAME.world.level.rooms[i],
+            var roomA = GAME.world.rooms[i],
                 pointA = {
                     x: Math.floor(Math.random()*roomA.w) + roomA.x,
                     y: Math.floor(Math.random()*roomA.h) + roomA.y
@@ -53,10 +53,10 @@ GAME.WorldController =
                 roomNum = i;
 
             while(roomNum == i){
-                roomNum = Math.floor(Math.random()*GAME.world.level.rooms.length);
+                roomNum = Math.floor(Math.random()*GAME.world.rooms.length);
             }
 
-            var roomB = GAME.world.level.rooms[roomNum],                
+            var roomB = GAME.world.rooms[roomNum],                
                 pointB = {
                     x: Math.floor(Math.random()*roomB.w) + roomB.x,
                     y: Math.floor(Math.random()*roomB.h) + roomB.y
@@ -80,8 +80,8 @@ GAME.WorldController =
                 }
 
                 if(pointB.x < GAME.world.width && pointB.y < GAME.world.width){         
-                    GAME.world.level.tiles[pointB.y][pointB.x] = this.generateTile(1);
-                    GAME.world.level.nonsolid_tiles.push({'y':pointB.y,'x':pointB.x});
+                    GAME.world.tiles[pointB.y][pointB.x] = this.generateTile(1);
+                    GAME.world.nonsolid_tiles.push({'y':pointB.y,'x':pointB.x});
                 }
             }
         }        
@@ -95,8 +95,9 @@ GAME.WorldController =
     
     
     spawnPlayer: function() {
-        var tile = GAME.world.level.nonsolid_tiles.pop();
-        GAME.world.level.player = {y: tile.y, x: tile.x};
+        var tile = GAME.world.nonsolid_tiles.pop();
+        GAME.player.y = tile.y;
+        GAME.player.x = tile.x;
     },
 
     spawnEnemies: function() {

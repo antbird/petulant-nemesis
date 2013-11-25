@@ -13,6 +13,6 @@ GAME.MovementController =
     },
     
     checkSolid: function(x,y) {
-        return GAME.data.tiles[GAME.world.level.tiles[y][x].tile_id].solid;             
+        return GAME.data.tiles[GAME.world.tiles[y][x].tile_id].solid;
     }
 };

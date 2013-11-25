@@ -1,9 +1,7 @@
 GAME.PlayerController =
 {
-    move: function(dir) {        
-        GAME.MovementController.move(dir,GAME.world.level.player);        
+    move: function(dir) {
+        GAME.MovementController.move(dir,GAME.player);
         GAME.WorldView.renderPlayer();
     }
-    
-
 };
